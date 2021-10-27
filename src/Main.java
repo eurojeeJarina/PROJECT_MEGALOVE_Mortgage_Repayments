@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Scanner;
 
 /*
 * HOW TO CALCULATE MORTGAGE REPAYMENTS:
@@ -11,10 +12,14 @@ public class Main extends JFrame {
 
 
     public static void main(String[] args) {
-        int a, b;
+
+
+        Scanner userInput = new Scanner(System.in);
+
         JButton calculateBtn;
         JTextField firstInputField, secondInputField;
-        JPanel mainPanel;
+        JPanel
+                mainPanel;
 
         JFrame f = new JFrame();
         mainPanel = new JPanel();
@@ -30,7 +35,19 @@ public class Main extends JFrame {
         f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminates java programm
         f.setLayout(null);
-        f.setVisible(true);
+        //f.setVisible(true);
+
+    }
+    public void calculateRepayments(int loan, double ratesPercentage, int years){
+
+        int yearsToMonthsConversion = years * 12;
+        double percentToDecimalConversion = ratesPercentage / 100;
+
+        int loanAmount;
+        int interestRate;
+        int numberOfPayments;
+
+        double totalAmountOfRepayments;
 
 
 
