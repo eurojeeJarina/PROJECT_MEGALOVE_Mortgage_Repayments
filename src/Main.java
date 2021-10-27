@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.text.DecimalFormat;
 
 /*
  * HOW TO CALCULATE MORTGAGE REPAYMENTS:
@@ -44,11 +45,20 @@ public class Main extends JFrame {
         double interestRate = percentToDecimalConversion;
         int numberOfPayments = yearsToMonthsConversion;
 
-        double topEquation = ((1 + interestRate) * numberOfPayments) * interestRate;
+        double topEquation = (Math.pow((1 + interestRate), numberOfPayments)) * interestRate;
+        double bottomEquation = (Math.pow((1 + interestRate) , numberOfPayments) - 1);
+        double totalAmountOfRepayment = (topEquation / bottomEquation) * loanAmount;
+
+        DecimalFormat df = new DecimalFormat("#.00");
+
 
         System.out.println("Mortgage Amount: " + loan);
         System.out.println("Interest Rate: " + interestRate);
         System.out.println("Num of Payments: " + numberOfPayments);
+
+        System.out.println("Top Equation: " + topEquation);
+        System.out.println("Bottom Equation: " + bottomEquation);
+        System.out.println("TOTAL MONTHLY REPAYMENT: \u20ac" + df.format(totalAmountOfRepayment));
 
     }
 
